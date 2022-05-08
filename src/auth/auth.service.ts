@@ -3,6 +3,7 @@ import * as bcrypt from 'bcrypt';
 import {UsersRepository} from "../models/users/users.repository";
 import {AuthCredentialsDto} from "./dto/auth-credentials.dto";
 import {JwtService} from "@nestjs/jwt";
+import {RegisterCredentialsDto} from "./dto/register-credentials.dto";
 
 @Injectable()
 export class AuthService {
@@ -11,8 +12,8 @@ export class AuthService {
 
     }
 
-    async signUp(authCredentialsDto: AuthCredentialsDto) : Promise<void> {
-        return this.usersRepository.createUser(authCredentialsDto);
+    async signUp(registerCredentialsDto: RegisterCredentialsDto) : Promise<void> {
+        return this.usersRepository.createUser(registerCredentialsDto);
     }
 
     async signIn(authCredentialsDto: AuthCredentialsDto) : Promise<{ accessToken }> {
