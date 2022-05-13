@@ -3,15 +3,16 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-export class DbConfig {
+export class MongoDb {
 
     private static readonly config: TypeOrmModuleOptions = {
-        type: 'mysql',
-        host: process.env.MYSQL_ADDRESS,
-        port: Number(process.env.MYSQL_PORT),
-        username: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PASSWORD,
-        database: process.env.MYSQL_DB,
+        name: 'mongo',
+        type: 'mongodb',
+        host: process.env.MONGO_ADDRESS,
+        port: Number(process.env.MONGO_PORT),
+        username: process.env.MONGO_USER,
+        password: process.env.MONGOPASSWORD,
+        database: process.env.MONGO_DB,
         autoLoadEntities: true,
         synchronize: true,
     };

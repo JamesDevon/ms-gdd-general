@@ -6,6 +6,7 @@ import {UsersRepository} from "../models/users/users.repository";
 import { PassportModule } from '@nestjs/passport';
 import {JwtModule} from "@nestjs/jwt";
 import { JwtStrategy } from './utils/jwt.strategy';
+import {Mysql} from "../../config/Mysql";
 
 @Module({
   imports: [

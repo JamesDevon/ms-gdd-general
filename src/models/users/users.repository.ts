@@ -16,6 +16,7 @@ export class UsersRepository extends Repository<User> {
         try{
             await this.save(user);
         }catch(error){
+            console.error(error);
             if (error.errno === DatabaseEnums.ER_DUP_ENTRY) {
                 throw new ConflictException('Username already exists');
             }else {
