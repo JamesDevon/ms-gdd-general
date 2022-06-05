@@ -2,14 +2,18 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {Mysql} from '../config/Mysql';
-import {MongoDb} from "../config/MongoDb";
+import {ProjectModule} from "./project/project.module";
+import {MongooseModule} from "@nestjs/mongoose";
+import { ProfileModule } from './profile/profile.module';
 
 
 @Module({
   imports: [
       TypeOrmModule.forRoot(Mysql.getConfig()),
-      TypeOrmModule.forRoot(MongoDb.getConfig()),
-      AuthModule
+      MongooseModule.forRoot("mongodb://localhost:27017"),
+      AuthModule,
+      ProjectModule,
+      ProfileModule,
   ],
 })
 export class AppModule {}
