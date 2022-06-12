@@ -1,4 +1,4 @@
-import {Controller, Get, HttpCode, Param, Res, UseGuards} from '@nestjs/common';
+import {Controller, Get, Param, Res, UseGuards} from '@nestjs/common';
 import {AuthGuard} from "@nestjs/passport";
 import {ProfileService} from "./profile.service";
 import {User} from "../auth/entities/users/user.entity";

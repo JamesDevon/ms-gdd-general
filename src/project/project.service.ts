@@ -19,7 +19,7 @@ export class ProjectService {
     }
 
     async createProject(newProject: CreateProjectRequestDto): Promise<Project> {
-        const project : Project = new Project(newProject.userId, newProject.title, newProject.sections);
+        const project : Project = new Project(newProject.userId, newProject.genre, newProject.title, newProject.description, newProject.sections);
         return this.projectRepository.create(project);
     }
 

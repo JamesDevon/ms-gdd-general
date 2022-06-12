@@ -3,6 +3,8 @@ import {ProjectService} from "./project.service";
 import {CreateProjectRequestDto} from "./dto/create-project.request.dto";
 import {AuthGuard} from "@nestjs/passport";
 import {Project} from "./schemas/project/project.schema";
+import {GetUser} from "../auth/utils/decorators/get-user.decorator";
+import {User} from "../auth/entities/users/user.entity";
 
 @UseGuards(AuthGuard())
 @Controller('project')
@@ -13,13 +15,15 @@ export class ProjectController {
 
     @HttpCode(200)
     @Get()
-    getProjectsForUser(@Query('userId') userId: string) : Promise<Project[]> {
-        return this.projectService.getProjectByUserId(userId);
+    getProjectsForUser(@GetUser() user: User) : Promise<Project[]> {
+        return this.projectService.getProjectByUserId(user.id);
     }
 
     @HttpCode(201)
     @Post()
-    createNewProject(@Body() newProject: CreateProjectRequestDto) : Promise<Project> {
+    createNewProject(@Body() newProject: CreateProjectRequestDto, @GetUser() user: User) : Promise<Project> {
+        newProject.userId = user.id;
+        console.log(newProject);
         return this.projectService.createProject(newProject);
     }
 
