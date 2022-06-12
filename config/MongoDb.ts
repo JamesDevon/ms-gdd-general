@@ -1,12 +1,11 @@
-import {TypeOrmModuleOptions} from "@nestjs/typeorm/dist/interfaces/typeorm-options.interface";
 import * as dotenv from 'dotenv';
+import {MongooseModuleOptions} from "@nestjs/mongoose/dist/interfaces/mongoose-options.interface";
 
 dotenv.config();
 
 export class MongoDb {
 
-    private static readonly config: TypeOrmModuleOptions = {
-        name: 'mongo',
+    private static readonly config: MongooseModuleOptions = {
         type: 'mongodb',
         host: process.env.MONGO_ADDRESS,
         port: Number(process.env.MONGO_PORT),
@@ -15,6 +14,7 @@ export class MongoDb {
         database: process.env.MONGO_DB,
         autoLoadEntities: true,
         synchronize: true,
+        useUnifiedTopology: true,
     };
 
 
