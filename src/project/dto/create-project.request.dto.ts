@@ -1,4 +1,4 @@
-import {Section} from "../schemas/section/section.entity";
+import {Section} from "../schemas/section/section.schema";
 import {GenreEnum} from "../../enums/genre.enum";
 
 export class CreateProjectRequestDto {

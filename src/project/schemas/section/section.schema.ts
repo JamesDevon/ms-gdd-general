@@ -4,13 +4,20 @@ import {Document, Types} from "mongoose";
 @Schema()
 export class Section {
 
+
+    constructor(title: string, content: string, sections: Section[]) {
+        this.title = title;
+        this.content = content;
+        this.sections = sections;
+    }
+
     @Prop()
     title: string;
 
     @Prop()
     content: string;
 
-    @Prop({type: [Types.ObjectId], ref: Section.name})
+    @Prop()
     sections: Section[];
 
 }
