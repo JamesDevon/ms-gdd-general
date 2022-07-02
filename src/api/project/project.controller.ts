@@ -23,7 +23,6 @@ export class ProjectController {
     @Post()
     createNewProject(@Body() newProject: CreateProjectRequestDto, @GetUser() user: User) : Promise<Project> {
         newProject.userId = user.id;
-        console.log(newProject);
         return this.projectService.createProject(newProject);
     }
 

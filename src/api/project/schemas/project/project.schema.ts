@@ -1,7 +1,7 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
-import {Document, Types} from "mongoose";
-import {Section} from "../section/section.entity";
-import {GenreEnum} from "../../../enums/genre.enum";
+import {Document} from "mongoose";
+import {Section} from "../section/section.schema";
+import {GenreEnum} from "../../../../enums/genre.enum";
 
 @Schema()
 export class Project {
@@ -26,7 +26,7 @@ export class Project {
     @Prop()
     description: string;
 
-    @Prop({type: [Types.ObjectId], ref: Section.name})
+    @Prop()
     sections: Section[];
 
 }

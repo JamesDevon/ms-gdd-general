@@ -3,6 +3,7 @@ import {ProjectRepository} from "./schemas/project/project.repository";
 import {Project} from "./schemas/project/project.schema";
 import {CreateProjectRequestDto} from "./dto/create-project.request.dto";
 import {DeleteProjectResponseDto} from "./dto/delete-project.response.dto";
+import {TemplateEngine} from "./templates/TemplateEngine";
 
 @Injectable()
 export class ProjectService {
@@ -20,7 +21,7 @@ export class ProjectService {
 
     async createProject(newProject: CreateProjectRequestDto): Promise<Project> {
         const project : Project = new Project(newProject.userId, newProject.genre, newProject.title, newProject.description, newProject.sections);
-        return this.projectRepository.create(project);
+        return this.projectRepository.create(TemplateEngine.getTemplatedProject(project));
     }
 
     async deleteProjectById(projectId: string) : Promise<DeleteProjectResponseDto> {
