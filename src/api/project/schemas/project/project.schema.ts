@@ -1,7 +1,7 @@
 import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {Document} from "mongoose";
 import {Section} from "../section/section.schema";
-import {GenreEnum} from "../../../enums/genre.enum";
+import {GenreEnum} from "../../../../enums/genre.enum";
 
 @Schema()
 export class Project {

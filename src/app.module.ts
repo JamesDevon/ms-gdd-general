@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './api/auth/auth.module';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {Mysql} from '../config/Mysql';
-import {ProjectModule} from "./project/project.module";
+import {ProjectModule} from "./api/project/project.module";
 import {MongooseModule} from "@nestjs/mongoose";
-import { ProfileModule } from './profile/profile.module';
+import { ProfileModule } from './api/profile/profile.module';
 
 
 @Module({
