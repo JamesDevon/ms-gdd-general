@@ -1,4 +1,4 @@
-import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";document: any
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
 import {Document, SchemaTypes, Types} from "mongoose";
 import {Section} from "../section/section.schema";
 import {GenreEnum} from "../../../../enums/genre.enum";
