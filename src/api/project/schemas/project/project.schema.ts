@@ -1,5 +1,5 @@
-import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
-import {Document} from "mongoose";
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";document: any
+import {Document, SchemaTypes, Types} from "mongoose";
 import {Section} from "../section/section.schema";
 import {GenreEnum} from "../../../../enums/genre.enum";
 
@@ -13,6 +13,9 @@ export class Project {
         this.description = description;
         this.sections = sections;
     }
+
+    @Prop({ type: SchemaTypes.ObjectId, auto: true})
+    _id: Types.ObjectId;
 
     @Prop()
     userId: string;
@@ -29,6 +32,8 @@ export class Project {
     @Prop()
     sections: Section[];
 
+    @Prop({type: Object})
+    data: Object;
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);

@@ -15,8 +15,20 @@ export class ProjectService {
         return this.projectRepository.find({userId})
     }
 
+    async getProjectById(projectId: string) : Promise<Project> {
+        return this.projectRepository.findOne({_id: projectId});
+    }
+
     async getAllProjects(): Promise<Project[]> {
         return this.projectRepository.findAll();
+    }
+
+    async updateProject(updateProps : Partial<Project>) : Promise<Project> {
+        if (updateProps._id == null) {
+            throw Error("Id for the project to update was undefined");
+        }
+
+        return this.projectRepository.findOneAndUpdate({_id: updateProps._id}, updateProps);
     }
 
     async createProject(newProject: CreateProjectRequestDto): Promise<Project> {

@@ -12,6 +12,6 @@ import {AuthModule} from "../auth/auth.module";
       AuthModule,
   ],
   providers: [ProjectService, ProjectRepository],
-  controllers: [ProjectController]
+  controllers: [ProjectController],
 })
 export class ProjectModule {}
