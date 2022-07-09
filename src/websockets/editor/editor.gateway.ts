@@ -41,7 +41,7 @@ export class EditorGateway implements NestGateway   {
         client.on("save-document", async (dataToSave:String) => {
             this.logger.debug("Saving document : "+projectId);
             project.data = dataToSave;
-            await this.projectService.updateProject(project);
+            await this.projectService.updateProject(project, projectId);
         })
         client.on('send-changes', (delta: string) => {
             this.logger.debug("Broadcasting changes : "+projectId);
