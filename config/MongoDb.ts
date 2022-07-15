@@ -15,6 +15,7 @@ export class MongoDb {
         autoLoadEntities: true,
         synchronize: true,
         useUnifiedTopology: true,
+        uri: process.env.MONGO_URI
     };
 
 

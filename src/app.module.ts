@@ -6,12 +6,13 @@ import {ProjectModule} from "./api/project/project.module";
 import {MongooseModule} from "@nestjs/mongoose";
 import { ProfileModule } from './api/profile/profile.module';
 import {EditorModule} from "./websockets/editor/editor.module";
+import {MongoDb} from "../config/MongoDb";
 
 
 @Module({
   imports: [
       TypeOrmModule.forRoot(Mysql.getConfig()),
-      MongooseModule.forRoot("mongodb://localhost:27017"),
+      MongooseModule.forRoot(MongoDb.getConfig().uri),
       AuthModule,
       ProjectModule,
       ProfileModule,
