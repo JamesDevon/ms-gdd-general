@@ -2,8 +2,8 @@ import {SubscribeMessage, WebSocketGateway} from "@nestjs/websockets";
 import {NestGateway} from "@nestjs/websockets/interfaces/nest-gateway.interface";
 import {Logger} from "@nestjs/common";
 import {Socket, Server} from 'socket.io';
-import {ProjectService} from "../../api/project/project.service";
-import {Project} from "../../api/project/schemas/project/project.schema";
+import {ProjectService} from "src/api/project/project.service";
+import {Project} from "src/api/project/schemas/project/project.schema";
 
 @WebSocketGateway({cors: true})
 export class EditorGateway implements NestGateway   {

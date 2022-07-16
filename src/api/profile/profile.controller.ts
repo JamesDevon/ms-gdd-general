@@ -1,9 +1,9 @@
 import {Controller, Get, Param, Res, UseGuards} from '@nestjs/common';
 import {AuthGuard} from "@nestjs/passport";
-import {ProfileService} from "./profile.service";
-import {User} from "../auth/entities/users/user.entity";
+import {ProfileService} from "src/api/profile/profile.service";
+import {User} from "src/api/auth/entities/users/user.entity";
 import { Response } from 'express';
-import {GetUser} from "../auth/utils/decorators/get-user.decorator";
+import {GetUser} from "src/api/auth/utils/decorators/get-user.decorator";
 
 @Controller('profile')
 export class ProfileController {

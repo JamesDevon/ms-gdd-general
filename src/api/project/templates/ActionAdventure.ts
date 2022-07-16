@@ -1,6 +1,6 @@
-import {Project} from "../schemas/project/project.schema";
-import {Section} from "../schemas/section/section.schema";
-import {Template} from "./Template";
+import {Project} from "src/api/project/schemas/project/project.schema";
+import {Section} from "src/api/project/schemas/section/section.schema";
+import {Template} from "src/api/project/templates/Template";
 
 export  class ActionAdventure extends Template{
 

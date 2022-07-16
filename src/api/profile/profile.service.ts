@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import {UsersRepository} from "../auth/entities/users/users.repository";
-import {User} from "../auth/entities/users/user.entity";
+import {User} from "src/api/auth/entities/users/user.entity";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
 
 @Injectable()
 export class ProfileService {
 
-    constructor(private usersRepository : UsersRepository) {
+    constructor(@InjectRepository(User) private usersRepository : Repository<User>) {
 
     }
 
     async getDetails(id: string) : Promise<User> {
-        return this.usersRepository.findOne({id});
+        return this.usersRepository.findOne({where: {id: id}});
     }
 
 }

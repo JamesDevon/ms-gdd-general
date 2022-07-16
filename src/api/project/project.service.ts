@@ -1,9 +1,9 @@
 import {Injectable, NotFoundException} from '@nestjs/common';
-import {ProjectRepository} from "./schemas/project/project.repository";
-import {Project} from "./schemas/project/project.schema";
-import {CreateProjectRequestDto} from "./dto/create-project.request.dto";
-import {DeleteProjectResponseDto} from "./dto/delete-project.response.dto";
-import {TemplateEngine} from "./templates/TemplateEngine";
+import {ProjectRepository} from "src/api/project/schemas/project/project.repository";
+import {Project} from "src/api/project/schemas/project/project.schema";
+import {CreateProjectRequestDto} from "src/api/project/dto/create-project.request.dto";
+import {DeleteProjectResponseDto} from "src/api/project/dto/delete-project.response.dto";
+import {TemplateEngine} from "src/api/project/templates/TemplateEngine";
 
 @Injectable()
 export class ProjectService {
