@@ -5,11 +5,12 @@ import {AuthCredentialsDto} from "./dto/auth-credentials.dto";
 import {JwtService} from "@nestjs/jwt";
 import {RegisterCredentialsDto} from "./dto/register-credentials.dto";
 import {User} from "./entities/users/user.entity";
+import {InjectRepository} from "@nestjs/typeorm";
 
 @Injectable()
 export class AuthService {
 
-    constructor(private usersRepository : UsersRepository, private jwtService : JwtService) {
+    constructor(@InjectRepository(UsersRepository) private usersRepository : UsersRepository, private jwtService : JwtService) {
 
     }
 
@@ -22,7 +23,7 @@ export class AuthService {
         const user: User = await this.usersRepository.findOne({where: {username: username}});
         if(user && (await bcrypt.compare(password, user.password))) {
             const payload: JwtPayload = {username};
-            const accessToken : string = await this.jwtService.sign(payload);
+            const accessToken : string = this.jwtService.sign(payload);
             return { accessToken, userId: user.id };
         }
         else {
