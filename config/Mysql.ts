@@ -14,7 +14,7 @@ export class Mysql {
         password: process.env.MYSQL_PASSWORD,
         database: process.env.MYSQL_DB,
         synchronize: true,
-        entities: ['dist/**/*.entity.js'],
+        entities: [User],
     };
 
 
