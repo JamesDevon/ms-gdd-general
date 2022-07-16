@@ -10,7 +10,7 @@ export class ProfileService {
     }
 
     async getDetails(id: string) : Promise<User> {
-        return this.usersRepository.findOne({id});
+        return this.usersRepository.findOne({where: {id: id}});
     }
 
 }
