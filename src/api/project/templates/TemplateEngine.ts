@@ -1,7 +1,7 @@
-import {GenreEnum} from "../../../enums/genre.enum";
-import {Template} from "./Template";
-import {ActionAdventure} from "./ActionAdventure";
-import {Project} from "../schemas/project/project.schema";
+import {GenreEnum} from "src/enums/genre.enum";
+import {Template} from "src/api/project/templates/Template";
+import {ActionAdventure} from "src/api/project/templates/ActionAdventure";
+import {Project} from "src/api/project/schemas/project/project.schema";
 
 export class TemplateEngine {
 

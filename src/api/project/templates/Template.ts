@@ -1,5 +1,5 @@
-import {Project} from "../schemas/project/project.schema";
-import {Section} from "../schemas/section/section.schema";
+import {Project} from "src/api/project/schemas/project/project.schema";
+import {Section} from "src/api/project/schemas/section/section.schema";
 
 export abstract class Template {
 

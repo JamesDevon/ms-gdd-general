@@ -1,6 +1,6 @@
 import {Injectable} from "@nestjs/common";
 import {InjectModel} from "@nestjs/mongoose";
-import {Project, ProjectDocument} from "./project.schema";
+import {Project, ProjectDocument} from "src/api/project/schemas/project/project.schema";
 import {FilterQuery, Model} from "mongoose";
 
 @Injectable()

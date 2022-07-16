@@ -1,5 +1,5 @@
 import {Section} from "../schemas/section/section.schema";
-import {GenreEnum} from "../../../enums/genre.enum";
+import {GenreEnum} from "src/enums/genre.enum";
 
 export class CreateProjectRequestDto {
     userId: string;

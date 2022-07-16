@@ -1,9 +1,9 @@
 import {EntityRepository, Repository} from 'typeorm'
 import * as bcrypt from 'bcrypt';
-import {User} from "./user.entity";
+import {User} from "src/api/auth/entities/users/user.entity";
 import {ConflictException, InternalServerErrorException} from "@nestjs/common";
-import {DatabaseEnums} from '../../../../enums/database.enums';
-import {RegisterCredentialsDto} from "../../dto/register-credentials.dto";
+import {DatabaseEnums} from 'src/enums/database.enums';
+import {RegisterCredentialsDto} from "src/api/auth/dto/register-credentials.dto";
 
 @EntityRepository(User)
 export class UsersRepository extends Repository<User> {

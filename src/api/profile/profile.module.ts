@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ProfileService } from './profile.service';
-import { ProfileController } from './profile.controller';
+import { ProfileService } from 'src/api/profile/profile.service';
+import { ProfileController } from 'src/api/profile/profile.controller';
 import {TypeOrmModule} from "@nestjs/typeorm";
-import {UsersRepository} from "../auth/entities/users/users.repository";
-import {AuthModule} from "../auth/auth.module";
+import {UsersRepository} from "src/api/auth/entities/users/users.repository";
+import {AuthModule} from "src/api/auth/auth.module";
 
 @Module({
   imports: [

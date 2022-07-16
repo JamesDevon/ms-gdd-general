@@ -1,11 +1,11 @@
-import {Body, Controller, Delete, Get, HttpCode, Param, Post, Put, Query, UseGuards} from '@nestjs/common';
-import {ProjectService} from "./project.service";
-import {CreateProjectRequestDto} from "./dto/create-project.request.dto";
+import {Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards} from '@nestjs/common';
+import {ProjectService} from "src/api/project/project.service";
+import {CreateProjectRequestDto} from "src/api/project/dto/create-project.request.dto";
 import {AuthGuard} from "@nestjs/passport";
-import {Project} from "./schemas/project/project.schema";
-import {GetUser} from "../auth/utils/decorators/get-user.decorator";
-import {User} from "../auth/entities/users/user.entity";
-import {UpdateProjectRequestDto} from "./dto/update-project.request.dto";
+import {Project} from "src/api/project/schemas/project/project.schema";
+import {GetUser} from "src/api/auth/utils/decorators/get-user.decorator";
+import {User} from "src/api/auth/entities/users/user.entity";
+import {UpdateProjectRequestDto} from "src/api/project/dto/update-project.request.dto";
 
 @UseGuards(AuthGuard())
 @Controller('project')

@@ -1,4 +1,4 @@
-import {GenreEnum} from "../../../enums/genre.enum";
+import {GenreEnum} from "src/enums/genre.enum";
 
 export class UpdateProjectRequestDto {
     title: string;
