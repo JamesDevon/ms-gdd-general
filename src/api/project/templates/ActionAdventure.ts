@@ -7,6 +7,7 @@ export  class ActionAdventure extends Template{
 
     constructProject(project: Project) {
         this.project = project
+        this.sections = [];
         this.sections.push(new Section('Game Overview', '', []));
         this.sections.push(new Section('Game Background & Game Flow', '', []));
         this.sections.push(new Section('Game Play', '', []));
