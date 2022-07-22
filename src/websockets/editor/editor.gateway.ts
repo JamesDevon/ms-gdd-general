@@ -4,6 +4,7 @@ import {Logger} from "@nestjs/common";
 import {Socket, Server} from 'socket.io';
 import {ProjectService} from "src/api/project/project.service";
 import {Project} from "src/api/project/schemas/project/project.schema";
+import {EditorService} from "./editor.service";
 
 @WebSocketGateway({cors: true})
 export class EditorGateway implements NestGateway   {
@@ -12,7 +13,7 @@ export class EditorGateway implements NestGateway   {
 
     private server;
 
-    constructor(private projectService: ProjectService) {
+    constructor(private projectService: ProjectService, private editorService: EditorService) {
     }
 
 
@@ -30,22 +31,27 @@ export class EditorGateway implements NestGateway   {
     }
 
     @SubscribeMessage('get-document')
-    async getDocument(client: Socket, projectId: string): Promise<void> {
+    async getDocument(client: Socket, data: { projectId: string, sectionId: number }): Promise<void> {
+        const {projectId, sectionId} = data;
         this.logger.debug("User subscribed to get-document with id : "+projectId);
-        if (projectId == null) return;
+        this.logger.debug("Loading section id : "+sectionId);
+        if (projectId == null || sectionId == null) return;
         const project: Project = await this.projectService.getProjectById(projectId);
-        client.join(projectId);
-        this.logger.debug("User joined room : "+projectId);
-        client.emit("load-document",  project.data || {});
-        this.logger.debug("Data emitted : "+projectId);
+        const room = projectId+sectionId;
+        client.join(room);
+        this.logger.debug("User joined room : "+room);
+        const sectionIndex = project.sections.findIndex(s => s._id == sectionId);
+        if (sectionIndex == null) return ;
+        client.emit("load-document",  project.sections[sectionIndex].content || {});
+        this.logger.debug("Data emitted : "+room);
         client.on("save-document", async (dataToSave:String) => {
-            this.logger.debug("Saving document : "+projectId);
-            project.data = dataToSave;
+            this.logger.debug("Saving document : "+room);
+            project.sections[sectionIndex].content = dataToSave;
             await this.projectService.updateProject(project, projectId);
         })
         client.on('send-changes', (delta: string) => {
-            this.logger.debug("Broadcasting changes : "+projectId);
-            client.broadcast.to(projectId).emit('receive-changes',delta);
+            this.logger.debug("Broadcasting changes : "+room);
+            client.broadcast.to(room).emit('receive-changes',delta);
         });
     }
 

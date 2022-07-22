@@ -5,23 +5,22 @@ import {Document} from "mongoose";
 export class Section {
 
 
-    constructor(title: string, content: string, sections: Section[]) {
+    constructor(_id: number, title: string, content: Object) {
+        this._id = _id;
         this.title = title;
         this.content = content;
-        this.sections = sections;
     }
+
+    @Prop()
+    _id: number;
 
     @Prop()
     title: string;
 
-    @Prop()
-    content: string;
-
-    @Prop()
-    sections: Section[];
-
+    @Prop({type: Object})
+    content: Object;
 }
 
-export const SectionSchema= SchemaFactory.createForClass(Section);
+export const SectionSchema = SchemaFactory.createForClass(Section);
 
 export type SectionDocument = Section & Document;
