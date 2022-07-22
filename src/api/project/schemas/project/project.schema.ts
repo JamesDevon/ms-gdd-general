@@ -31,9 +31,6 @@ export class Project {
 
     @Prop()
     sections: Section[];
-
-    @Prop({type: Object})
-    data: Object;
 }
 
 export const ProjectSchema = SchemaFactory.createForClass(Project);
